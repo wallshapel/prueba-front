@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import User from './User';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -42,15 +43,9 @@ const Users = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map(user => (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>
-                <button className="btn btn-danger" onClick={() => handleDelete(user.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
+          { users.map(user => (
+            <User key={ user.id } user={ user } handleDelete={ handleDelete } />
+          )) }
         </tbody>
       </table>
     </div>
